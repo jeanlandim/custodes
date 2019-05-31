@@ -12,11 +12,12 @@ Filtrando os seguintes itens:
 * Encerrar chamado
 
 Após a filtragem de tais itens, é realizada a verificação de sua conformidade de acordo com regras inseridas pela gestão e supervisão.
-O software em si não garante 100% de auditoria, mas permite flexibilidade no hora de auditar chamados.
+O software em si não garante 100% de auditoria, mas permite flexibilidade na hora de auditar chamados.
 
 Abaixo, o exemplo típico de um chamado com tais itens:
 
 ![custodes_exemplo_01.PNG](https://github.com/jeanlandim/custodes/raw/master/custodes_exemplo_01.PNG)
 ![custodes_exemplo_02.PNG](https://github.com/jeanlandim/custodes/raw/master/custodes_exemplo_02.PNG)
+
 
 
