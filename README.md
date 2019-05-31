@@ -16,5 +16,7 @@ O software em si não garante 100% de auditoria, mas permite flexibilidade no ho
 
 Abaixo, o exemplo típico de um chamado com tais itens:
 
+![custodes_exemplo_01.PNG](https://github.com/jeanlandim/custodes/raw/master/custodes_exemplo_01.PNG)
+![custodes_exemplo_02.PNG](https://github.com/jeanlandim/custodes/raw/master/custodes_exemplo_02.PNG)
 
 
