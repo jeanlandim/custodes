@@ -2,7 +2,7 @@
 
   ![custodes_logo.PNG](https://github.com/jeanlandim/custodes/raw/master/custodes_logo.PNG)
 
-  Software para auditoria (interna) de chamados
+  Software para auditoria (interna) de chamados gerados no CA Service Desk Manager
 
 
 # O quê é Custodes?
