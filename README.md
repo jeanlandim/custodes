@@ -1,6 +1,6 @@
 # Custodes
 
-  ![custodes_logo.PNG](https://github.com/jeanlandim/custodes/raw/master/custodes_logo.PNG)
+  ![custodes_logo.png](https://github.com/jeanlandim/custodes/raw/master/imgs/custodes_logo.png)
 
   Software para auditoria (interna) de chamados gerados no CA Service Desk Manager
 
@@ -20,7 +20,7 @@ O software em si não garante 100% de auditoria, mas permite flexibilidade na ho
 
 Abaixo, o exemplo típico de um chamado com tais itens e como são interligados:
 
-![Custodes_Venn.png](https://github.com/jeanlandim/custodes/raw/master/Custodes_Venn.png)
+![custodes_venn.png](https://github.com/jeanlandim/custodes/raw/master/imgs/custodes_venn.png)
 
 
 # Licença
