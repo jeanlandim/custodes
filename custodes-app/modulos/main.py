@@ -26,7 +26,7 @@ class Campos():
         responsavel=""
         # Selecione o campo da primeira ocorrência até a última, e os extraia.
         campos = [
-        "(?=Solicitação).+?(?=m)", "(?=Incidente).+?(?=m)", "(?=Status).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)",
+        "^(?=Solicitação).+?(?=m)", "(?=Incidente).+?(?=m)", "(?=Status).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)",
         "(?=Responsável:).+?(?=,)", "(?=Grupo atribuído:).+?(?=Nível)", "(?=Grupo atribuído:).+?(?=Nível)",
         "(?=Área da solicitação:).+?(?=Causa)", "(?=Item de configuração).+?(?=ChargeBack)", "(?=Descrição).+?(?=Histórico)",
         "(?=Script).+?(?="+responsavel+")", "(?=Encerrar).+?(?=System_AHD_generated,)" ]
@@ -34,9 +34,12 @@ class Campos():
         # Usado para controle
         loop = 0
         for campo in campos:
+          try:
            re.search(campo,palavras,re.MULTILINE,re.DOTALL)
            loop+=1
            if loop is 3:
             responsavel = re.search(
+          finally:
+                return "N/A"
         
        
