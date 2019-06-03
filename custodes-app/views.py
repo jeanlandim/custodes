@@ -1,8 +1,7 @@
 # custodes-app/views.py
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
-from .modulos.main import PegaRelatorio
-from tempfile import NamedTemporaryFile
+from .modulos.main import PegaRelatorio, Campos
 # Create your views here
 
 # Página inicial do site
@@ -18,10 +17,10 @@ def Index(request):
 # em seguida na nova requisição
 def Coleta(request):
     # Coleta os dados do relatório gerado na página inicial do app
-    dados = request.POST.get('relatorio')
-   # arquivo_temp_cru = TemporaryFile(mode='w+t') # Cria um arquivo temporário escrito, o formulário cru
-   
-    # Pega da primeira ocorrência até a última e grava no arquivo 
-    # Escreve no arquivo tempoário os dados crus
-   # arquivo_temp.writelines(dados)
+    dados = str(request.POST.get('relatorio'))
+    arquivo = open('saida.txt','a')
+    x = dados.replace('\r\n',' ')
+    x = x.replace('\t',' ')
+    arquivo.write(Campos.Captura(x))
+    arquivo.close()
     return render(request,'relatorio_final.html',{'data':dados}) # os insere na nova página
