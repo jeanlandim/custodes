@@ -1,6 +1,7 @@
 # custodes-app/modulos/main
-from django import forms
 import re
+from django import forms
+
 
 # PegaRelatorio
 # Carrega o formulário da página inicial e o prepara para mandar para 
@@ -15,32 +16,27 @@ class PegaRelatorio(forms.Form):
         relatorio = dados_limpados('relatorio')
         if not relatorio:
             raise forms.ValidationError("É necessário que você cole o relatório gerado.")
+            
 # Define as regras para pegar a combinação de palavras para pegar o texto correto
 class Campos():
     def Captura(palavras):
-        if (re.search("(?=Solicitação).+?(?=m)",palavras)):
-            return re.search("(?=Solicitação).+?(?=m)",palavras).group()
-        if(re.search("(?=Incidente).+?(?=m)",palavras)):
-            return re.search("(?=Incidente).+?(?=m)",palavras).group()
-        if(re.search("(?=Status).+?(?=Ativo:)",palavras)):
-            return re.search("(?=Status).+?(?=Ativo:)",palavras).group()
-        if(re.search("(?=Usuário afetado:).+?(?=,)",palavras)):
-            return re.search("(?=Usuário afetado:).+?(?=,)",palavras).group()
-        if(re.search("(?=Responsável:).+?(?=,)",palavras)):
-            # Pega o primeiro nome do responsável para ser usado futuramente 
-            # no if do 'Script vinculado'
-            _responsavel = re.search("(?=Responsável:).+?(?=,)",palavras).group()
-            responsavel = _responsavel.split(" ")[1]
-            return re.search("(?=Responsável:).+?(?=,)",palavras).group()
-        if(re.search("(?=Grupo atribuído:).+?(?=Nível)",palavras)):
-            return re.search("(?=Grupo atribuído:).+?(?=Nível)",palavras).group()
-        if(re.search("(?=Área da solicitação:).+?(?=Causa)",palavras)):
-            return re.search("(?=Área da solicitação:).+?(?=Causa)",palavras).group()
-        if(re.search("(?=Item de configuração).+?(?=ChargeBack)",palavras)):
-            return re.search("(?=Item de configuração).+?(?=ChargeBack)",palavras).group()
-        if(re.search("(?=Descrição).+?(?=Histórico)",palavras)):
-            return re.search("(?=Descrição).+?(?=Histórico)",palavras).group()
-        if(re.search("(?=Script).+?(?=)",palavras)):
-            return re.search("(?=Script).+?(?="+responsavel+")",palavras).group()
-        if(re.search("(?=Encerrar).+?(?=System_AHD_generated,)",palavras)):
-            return re.search("(?=Encerrar).+?(?=System_AHD_generated,)",palavras).group()
+        
+        # Ainda não sabemos o nome do responsavel paara realizar a pesquisa do script vinculado, então vamos deixar a
+        # váriavel vazia. 
+        responsavel=""
+        # Selecione o campo da primeira ocorrência até a última, e os extraia.
+        campos = [
+        "(?=Solicitação).+?(?=m)", "(?=Incidente).+?(?=m)", "(?=Status).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)",
+        "(?=Responsável:).+?(?=,)", "(?=Grupo atribuído:).+?(?=Nível)", "(?=Grupo atribuído:).+?(?=Nível)",
+        "(?=Área da solicitação:).+?(?=Causa)", "(?=Item de configuração).+?(?=ChargeBack)", "(?=Descrição).+?(?=Histórico)",
+        "(?=Script).+?(?="+responsavel+")", "(?=Encerrar).+?(?=System_AHD_generated,)" ]
+         
+        # Usado para controle
+        loop = 0
+        for campo in campos:
+           re.search(campo,palavras,re.MULTILINE,re.DOTALL)
+           loop+=1
+           if loop is 3:
+            responsavel = re.search(
+        
+       
