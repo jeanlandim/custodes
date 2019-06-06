@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
 from .modulos.pegarelatorio import PegaRelatorio
-from .modulos.campos import Campos
+from .modulos.campos import Captura
 # Create your views here
 # Página inicial do site
 def Index(request):
