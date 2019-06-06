@@ -19,10 +19,8 @@ def Captura(arquivo):
     loop = 0
     for campo in campos:
         regex = re.compile(campo,re.MULTILINE+re.DOTALL) 
-
-        numero_de_chamados = len(re.findall(arquivo))
-        numero_de_chamados = numero_de_chamados - 1
-        chave = "chamado_"+str(numero_de_chamados)
         # pega as solicitações        
         if loop is 0:
-            info_chamados[chave].append(
+            info_chamados.append(arquivo)
+        
+        loop+=1
