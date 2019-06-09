@@ -1,26 +1,17 @@
 # custodes-app/modulos/campos.py
 import re
 # Define as regras para pegar a combinação de palavras para pegar o texto correto
-
 def Captura(arquivo):
-    
-    # Ainda não sabemos o nome do responsavel paara realizar a pesquisa do script vinculado, então vamos deixar a
-    # váriavel vazia. 
-    responsavel=""
-    # Selecione o campo da primeira ocorrência até a última, e os extraia.
-    campos = [
-        "Solicitação: \d{6,} | Incidente: \d{6,}", "(?=Status).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)",
-        "(?=Responsável:).+?(?=,)", "(?=Grupo atribuído:).+?(?=Nível)","(?=Área da solicitação:).+?(?=Causa)", 
+   # Selecione o campo da primeira ocorrência até a última, e os extraia.
+   campos = ["(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)",
+           "(?=Responsável:).+?(?=,)", "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=Item)", 
         "(?=Item de configuração).+?(?=ChargeBack)", "(?=Descrição).+?(?=Histórico)",
-        "(?=Script).+?(?="+responsavel+"|Pai)", "(?=Encerrar).+?(?=System_AHD_generated,)" ]
-    # Armazena todos os campos coletados para formatação do chamado (em forma de lista)
-    info_chamados = []
+        "(?=Script).+?(?=Pai)", "(?=Encerrar).+?(?=Pai|System_AHD_generated,)" ]
+   # Armazena todos os campos coletados para formatação do chamado (em forma de lista)
+   info_chamados = []
+   # Captura
+   for campo in campos:
+       regex = re.compile(campo,re.MULTILINE+re.DOTALL) 
+       info_chamados.append(regex.findall(arquivo))
    
-    loop = 0
-    for campo in campos:
-        regex = re.compile(campo,re.MULTILINE+re.DOTALL) 
-        # pega as solicitações        
-        if loop is 0:
-            info_chamados.append(arquivo)
-        
-        loop+=1
+   return info_chamados

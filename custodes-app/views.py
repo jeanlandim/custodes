@@ -19,4 +19,5 @@ def Index(request):
 def Coleta(request):
     # Coleta os dados do relatório gerado na página inicial do app
     dados = request.POST.get('relatorio')
-    return render(request,'relatorio_final.html',{'data':dados}) # os insere na nova página
+    chamados = Captura(dados)
+    return render(request,'relatorio_final.html',{'chamados':chamados}) # os insere na nova página
