@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect 
 from .modulos.pegarelatorio import PegaRelatorio
 from .modulos.campos import Captura
+from .modulos.formatar import Formatar
 # Create your views here
 # Página inicial do site
 def Index(request):
@@ -19,5 +20,5 @@ def Index(request):
 def Coleta(request):
     # Coleta os dados do relatório gerado na página inicial do app
     dados = request.POST.get('relatorio')
-    chamados = Captura(dados)
+    chamados = Formatar(Captura(dados))
     return render(request,'relatorio_final.html',{'chamados':chamados}) # os insere na nova página

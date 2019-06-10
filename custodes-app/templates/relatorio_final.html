@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
-{% block content %} 
+{% block content %}
+{% autoescape off %}
 {% for campo in chamados %}
-<p>{{campo}}</p>
+{{campo}}<br>
 {% endfor %}
+{% endautoescape %} 
 {% endblock %} 
