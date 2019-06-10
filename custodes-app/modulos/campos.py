@@ -3,7 +3,7 @@ import re
 # Define as regras para pegar a combinação de palavras para pegar o texto correto
 def Captura(arquivo):
    # Selecione o campo da primeira ocorrência até a última, e os extraia.
-   campos = ["(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)",
+   campos = ["(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status:).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)",
            "(?=Responsável:).+?(?=,)", "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=Item)", 
         "(?=Item de configuração).+?(?=ChargeBack)", "(?=Descrição).+?(?=Interrupção|Histórico)",
         "(?=Script).+?(?=Pai)", "(?=Encerrar).+?(?= pm | am |Pai|System_AHD_generated,)" ]
