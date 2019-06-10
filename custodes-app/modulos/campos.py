@@ -17,14 +17,14 @@ def Captura(arquivo):
     # Armazena todos os campos coletados para formatação do chamado(em forma de lista)
     info_chamados = []
     # Captura
-	 for campo in campos:
+    for campo in campos:
         regex = re.compile(campo, re.MULTILINE + re.DOTALL)
-		  info_chamados.append(regex.findall(var))
+        info_chamados.append(regex.findall(var))
 	 a = 0
-	 chamados = []
-	 for i in info_chamados[0]:
-     	 chamados.append(i + info_chamados[1][a] + info_chamados[2][a] + " " + info_chamados[3][a] + " " +
-         	info_chamados[4][a] + info_chamados[5][a] + info_chamados[6][a] + info_chamados[7][a] +
-         	info_chamados[8][a] + info_chamados[9][a])
-		 a += 1
+    chamados = []
+    for i in info_chamados[0]:
+        chamados.append(i + info_chamados[1][a] + info_chamados[2][a] + " " + info_chamados[3][a] + " " +
+                info_chamados[4][a] + info_chamados[5][a] + info_chamados[6][a] + info_chamados[7][a] +
+                info_chamados[8][a] + info_chamados[9][a])
+	a += 1
     return (chamados)
