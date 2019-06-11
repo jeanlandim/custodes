@@ -33,10 +33,9 @@ def Captura(Relatorio):
     for chave in range(total_de_chamados):
         chamado[chave] = [] # Cria lista para cada chamados
     # Cria lista para guardar os chamados fatiados
-    chamados_fatiados = []
+    chamados_fatiados = re.findall(delimitador_chamado,Relatorio,re.MULTILINE+re.DOTALL)
     # Fatia os chamados
     for iteracao in range(total_de_chamados):
-        chamados_fatiados.append(re.findall(delimitador_chamado,Relatorio,re.MULTILINE+re.DOTALL))
         # Passa para 'campo' a expressão regular para captura dos campos (padrões) 
         for campo in campos_padroes:
             # Compila a expressão regular que define o campo
