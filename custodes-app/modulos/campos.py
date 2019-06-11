@@ -22,7 +22,7 @@ def Captura(Relatorio):
                      "(?=Encerrar).+?(?=Pai:)",
                      "(?:Registrar comentário).+?(?=Não resolvido, fechado)"]
     # Delimitador de chamado, que será usada para fazer a fatia do chamado
-    delimitador_chamado = ["(?=Solicitação:|Incidente:).+?(?=SLA)"]
+    delimitador_chamado = "(?=Solicitação:|Incidente:).+?(?=SLA)"
 
     # Pega o total de chamados para criação dos dicionários, os quais conteram os atributos de cada chamado   
     total_de_chamados = len(re.findall(campos_padroes[0],Relatorio,re.MULTILINE+re.DOTALL))
