@@ -1,9 +1,5 @@
 # Custodes
-
-  ![custodes_logo.png](https://github.com/jeanlandim/custodes/raw/master/imgs/custodes_logo.png)
-
-  Software para auditoria (interna) de chamados gerados no CA Service Desk Manager
-
+Software para auditoria (interna) de chamados gerados no CA Service Desk Manager. Versão 1.0a(lpha)
 
 # O quê é Custodes?
 Com o nome baseado no [poema](https://pt.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F) de Juvenal (poeta e retórico romano, autor das Sátiras). Custodes, é um software para auditoria (usando tratamento de texto) interna de chamados para equipes de helpdesk usando CA Service Desk Manager.
@@ -22,9 +18,13 @@ Abaixo, o exemplo típico de um chamado com tais itens e como são interligados:
 
 ![custodes_venn.png](https://github.com/jeanlandim/custodes/raw/master/imgs/custodes_venn.png)
 
+# Changelog
+* Versão Alpha atingida (1.0a)
+
+# TODO
+Refatorar o código para uma semântica mais acessível e profissional do código nas fase beta e estável do programa, e implementar melhorias e recursos de acordo com as exigências da equipe, gestão e supervisão.
 
 # Licença
-
 <b>GPLV3</b>
 
 Custodes - (2019) Jean Landim
