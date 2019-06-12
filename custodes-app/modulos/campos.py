@@ -1,11 +1,6 @@
 # custodes-app/modulos/campos.py
 # Importa a biblioteca de regex
 import re
-# Para debug do modulo
-def debug(_debug):
-    debug = open('debug.txt','w')
-    debug.write(_debug)
-    debug.close()
 # Define as regras para pegar a combinação de palavras para pegar o texto correto
 def Captura(Relatorio):
     # Selecione o campo da primeira ocorrência até a última, e os extraia.
@@ -18,11 +13,11 @@ def Captura(Relatorio):
                      "(?=Área do incidente:|Área da solicitação:).+?(?=Item)",
                      "(?=Item de configuração:).+?(?=ChargeBack)",
                      "(?=Descrição:).+?(?=Interrupção|Histórico)",
-                     "(?=Script).+?(?=^$)",
+                     "Script(?!.*Script).+?(?=Registrar comentário|Encerrar chamado)",
                      "(?=Encerrar).+?(?=Pai:)",
-                     "(?:Registrar comentário).+?(?=Não resolvido, fechado)"]
+                     "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"]
     # Delimitador de chamado, que será usada para fazer a fatia do chamado
-    delimitador_chamado = "(?=Solicitação:|Incidente:).+?(?=SLA)"
+    delimitador_chamado = "(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"
 
     # Pega o total de chamados para criação dos dicionários, os quais conteram os atributos de cada chamado   
     total_de_chamados = len(re.findall(campos_padroes[0],Relatorio,re.MULTILINE+re.DOTALL))
@@ -45,4 +40,9 @@ def Captura(Relatorio):
                 chamado[chave].append(_campo) 
         iteracao+=1 
     
-    debug(str(chamado)) 
+    chamados_prontos = []
+    for chave in range(total_de_chamados):
+        for conteudo in chamado[chave]:
+            chamados_prontos.append(conteudo)
+
+    return(chamados_prontos)
