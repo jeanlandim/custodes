@@ -18,6 +18,7 @@ def Formatar(info_chamados):
         texto_cru = texto_cru.replace(r"\r\n","<br>")
         texto_cru = texto_cru.replace("Script vinculado","Script vinculado:")
         texto_cru = texto_cru.replace("Registrar comentário","Registrar comentário:")
+        texto_cru = texto_cru.replace("Encerrar chamado","Encerrar chamado:")
         if texto_cru.split(":")[0] == "Incidente" or texto_cru.split(":")[0] == "Solicitação":
            numero_do_chamado = texto_cru.split(":")[1]
            numero_do_chamado = numero_do_chamado.replace(" ","")
