@@ -6,7 +6,7 @@ def Formatar(info_chamados):
     # Retira os caracteres "[","]","'"
     caracteres_indesejados = ["[","]","\'"]
     # Campos em negrito
-    campos_negrito = ["Usuário afetado","Responsável","Área da solicitação","Item de configuração","Descrição","Status","Grupo atribuído","Área do incidente"]
+    campos_negrito = ["Usuário afetado","Responsável","Área da solicitação","Item de configuração","Descrição","Status","Grupo atribuído","Área do incidente","Script vinculado","Encerrar chamado","Registrar Comentário"]
     # Dados limpos
     dados_limpos = []
     for texto_cru in info_chamados:
@@ -16,7 +16,8 @@ def Formatar(info_chamados):
 
         texto_cru = texto_cru.replace(r"\t"," ")
         texto_cru = texto_cru.replace(r"\r\n","<br>")
-
+        texto_cru = texto_cru.replace("Script vinculado","Script vinculado:")
+        texto_cru = texto_cru.replace("Registrar comentário","Registrar comentário:")
         if texto_cru.split(":")[0] == "Incidente" or texto_cru.split(":")[0] == "Solicitação":
            numero_do_chamado = texto_cru.split(":")[1]
            numero_do_chamado = numero_do_chamado.replace(" ","")
@@ -24,7 +25,7 @@ def Formatar(info_chamados):
 
         for campos in campos_negrito: 
             if texto_cru.split(":")[0] == campos:
-               texto_cru = "<i>"+texto_cru+"</i>"
+               texto_cru = texto_cru.replace(campos,"<b>"+campos+"</b>")
 
         dados_limpos.append(texto_cru)
 
