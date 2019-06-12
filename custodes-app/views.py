@@ -4,7 +4,6 @@ from django.http import HttpResponseRedirect
 from .modulos.pegarelatorio import PegaRelatorio
 from .modulos.campos import Captura
 from .modulos.formatar import Formatar
-from .modulos.versao import VERSAO
 # Create your views here
 # Página inicial do site
 def Index(request):
