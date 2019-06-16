@@ -36,8 +36,8 @@ def Captura(Relatorio):
             # Compila a expressão regular que define o campo
             exp_reg = re.compile(campo,re.MULTILINE+re.DOTALL)
             for _campo in exp_reg.findall(chamados_fatiados[iteracao]): # Coloca em cada chamado o campo capturado
-                chave = iteracao
-                chamado[chave].append(_campo) 
+                chave = iteracao # Define as chaves em ordem númerica
+                chamado[chave].append(_campo) # Adiciona a lista de cada chave o campo 
         iteracao+=1 
     
     chamados_prontos = []

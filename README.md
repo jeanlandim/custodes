@@ -2,7 +2,7 @@
 Software para auditoria (interna) de chamados gerados no CA Service Desk Manager. Versão 1.0a(lpha)
 
 # O quê é Custodes?
-Com o nome baseado no [poema](https://pt.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F) de Juvenal (poeta e retórico romano, autor das Sátiras). Custodes, é um software para auditoria (usando tratamento de texto) interna de chamados para equipes de helpdesk usando CA Service Desk Manager.
+Com o nome baseado no [poema](https://pt.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F) de Juvenal (poeta e retórico romano, autor das Sátiras), Custodes é um software para auditoria (usando tratamento de texto) interna de chamados para equipes de helpdesk usando CA Service Desk Manager.
 
 Filtrando os seguintes itens:
 * Tipo (de incidente ou solicitação) 
