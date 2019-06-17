@@ -4,8 +4,7 @@ from django.contrib import admin
 from .views import *
 
 urlpatterns = [
-        path('',Index,name='Index'), # Sem caminho após a URL principal
-                                     # vá para LoginUsuario da views.py
+        path('',Index,name='Index'), 
         path('coletando/',Coleta,name="Coleta") 
         
 ]
