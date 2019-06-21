@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [    
     path('admin/', admin.site.urls),
-    path('',include('custodes-app.urls')), # URLs do App Auditoria
-]                                       # aponta para url.py do app custodes-app
+    path('',include('custodes-app.urls')), # URLs do App Custodes
+]                                          # aponta para url.py do app custodes-app
