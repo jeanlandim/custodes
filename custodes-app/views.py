@@ -1,23 +1,22 @@
 # custodes-app/views.py
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
-from .os.formatar import Formatar
-# Create your views here
+from .modulos.custodesapp import Formatar,
 # Página inicial do site
 def Index(request):
     if request.method == 'POST': 
-        form = PegaRelatorio(request.POST)
-        if form.is_valid():
+        Formulario = PegaRelatorio(request.POST)
+        if Formulario.is_valid():
            return HttpResponseRedirect('coletando/') 
     else:
-            form = PegaRelatorio()
-    return render(request,'index.html',{'form':form}) 
+            Formulario = PegaRelatorio()
+    return render(request,'index.html',{'form':Formulario}) 
 
 # Grava os dados crus, gerados pelo formulário, o formate na maneira correta e o abre
 # em seguida na nova requisição
 def Coleta(request):
     # Coleta os dados do relatório gerado na página inicial do app
-    dados = request.POST.get('relatorio')
-    chamados = Formatar(Captura(dados))
+    Dados = request.POST.get('relatorio')
+    Chamados = Formatar(Captura(Dados))
     chamados = Captura(dados)
-    return render(request,'relatorio_final.html',{'chamados':chamados}) # os insere na nova página
+    return render(request,'relatorio_final.html',{'chamados':Chamados}) # os insere na nova página
