@@ -19,12 +19,15 @@ class PegaRelatorio(forms.Form):
 class CustodesApp():
     # abre os arquivos JSON para extração de campos do relatório e tratamento 
     def __init__(self):
-        with open('./custodes-app/dados/CamposPadroesEDelimitador.json','r') as Campos:
-             self.Regexs = json.load(Campos)
-        with open('./custodes-app/dados/Substitutos.json','r') as Substitutos:
-             self.Substituicoes = json.load(Substitutos)              
-        with Open('./custodes-app/dados/Urls.json','r') as Url:
-             self.Urls = json.load(Url)
+         self.Regexs = {"CamposPadroes":[ "(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status:).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)", "(?=Responsável:).+?(?=,)", "(?=Grupo atribuído:).+?(?=Nível)",
+                        "(?=Área do incidente:|Área da solicitação:).+?(?=Item)", "(?=Item de configuração:).+?(?=ChargeBack)", "(?=Descrição:).+?(?=Interrupção|Histórico)", "Script(?!.*Script).+?(?=Registrar comentário|Encerrar chamado)",
+                        "(?=Encerrar).+?(?=Pai:)", "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"],
+                        "DelimitadorDeChamados":["(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"] }
+         self.Substituicoes = { "CaracteresIndesejados": ["[","]","\'"],
+                               "CamposNegritos":["Usuário afetado","Responsável","Área da solicitação", "Item de configuração","Descrição","Status","Grupo atribuído", "Área do incidente","Script vinculado","Encerrar chamado", "Registrar Comentário"], 
+                               "Substituir":["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação"],
+                               "Substitutos":[" "," ","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação"] }     
+         self.Urls = "http://contas.tcu.gov.br/CAisd/pdmweb.exe?OP=SEARCH+FACTORY=cr+SKIPLIST=1+QBE.EQ.ref_num="
      
     def Captura(self,Relatorio):
         '''
