@@ -74,11 +74,11 @@ class CustodesApp():
     
         UrlDoServiceDesk = self.Urls
     
-        def PreFormatacao(self,RelatorioCru):
+        def PreFormatacao(RelatorioCru):
             DadosLimpos = []
             CaracteresIndesejados = self.Substituicoes['CaracteresIndesejados']
             Substituir = self.Substituicoes['Substituir']
-            Substitutos = self.Substituicoes['Substituitos']
+            Substitutos = self.Substituicoes['Substitutos']
             
             for TextoCru in RelatorioCru:
                 TextoCru = str(TextoCru) 
@@ -90,12 +90,12 @@ class CustodesApp():
 
             return(DadosLimpos)
     
-        def Formatacao(self,Tipo):
+        def Formatacao(Tipo):
             DadosLimpos = PreFormatacao(RelatorioCru)
             Tipos = ["HTML","JSON"]
             NovosDadosEmHTML = []
             NovosDadosEmJSON = {}
-            CamposEmNegrito = self.Substitucoes['CamposNegritos']
+            CamposEmNegrito = self.Substituicoes['CamposNegritos']
 
             for Dados in DadosLimpos:
                 Dados = str(Dados)
@@ -149,5 +149,6 @@ class CustodesApp():
                         EncerrarChamado = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['EncerrarChamado'] = EncerrarChamado
                     return(NovosDadosEmJSON)
-            return(Formatacao("HTML"))
+            
+        return(Formatacao("HTML"))
 
