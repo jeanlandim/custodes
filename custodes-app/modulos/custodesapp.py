@@ -5,7 +5,7 @@
 import re, json
 from django import forms
     
-class CustodesApp():
+class CustodesApp(forms.Form):
     # abre os arquivos JSON para extração de campos do relatório e tratamento 
     def __init__(self):
         with open('../dados/CamposPadroesEDelimitador.json','r') as Campos:
@@ -15,7 +15,7 @@ class CustodesApp():
         with Open('../dados/Urls.json','r') as Url:
              Urls = json.load(Url)
     
-    def PegaRelatorio(self,forms.Form):
+    def PegaRelatorio(self):
         '''
             PegaRelatorio:
     
@@ -115,34 +115,34 @@ class CustodesApp():
                        NumeroDoChamado = Dados.split(":")[1]
                        NumeroDoChamado = NumeroDoChamado.replace(" ","")
                        NovosDadosEmJSON[NumeroDoChamado] = {}
-                    else if Dados.split(":")[0] == "Usuário afetado":
+                    elif Dados.split(":")[0] == "Usuário afetado":
                         UsuarioAfetado =  Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['UsuarioAfetado'] = UsuarioAfetado
-                    else if Dados.split(":")[0] == "Responsável":
+                    elif Dados.split(":")[0] == "Responsável":
                         Responsavel = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['Responsavel'] = Responsavel
-                    else if Dados.split(":")[0] == "Tipo da solicitação" or Dados.split(":")[0] == "Tipo do incidente":
+                    elif Dados.split(":")[0] == "Tipo da solicitação" or Dados.split(":")[0] == "Tipo do incidente":
                         _Tipo = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['Tipo'] = _Tipo
-                    else if Dados.split(":")[0] == "Item de configuração":
+                    elif Dados.split(":")[0] == "Item de configuração":
                         IC = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['IC'] = IC
-                    else if Dados.split(":")[0] == "Descrição":
+                    elif Dados.split(":")[0] == "Descrição":
                         Descricao = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['Descricao'] = Descricao
-                    else if Dados.split(":")[0] == "Status":
+                    elif Dados.split(":")[0] == "Status":
                         Status = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['Status'] = Status
-                    else if Dados.split(":")[0] == "Grupo atribuído":
+                    elif Dados.split(":")[0] == "Grupo atribuído":
                         GrupoAtribuido = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['GrupoAtribuido'] = GrupoAtribuido
-                    else if Dados.split(":")[0] == "Script vinculado":
+                    elif Dados.split(":")[0] == "Script vinculado":
                         Script = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['Script'] = Script
-                    else if Dados.split(":")[0] == "Registrar comentário":
+                    elif Dados.split(":")[0] == "Registrar comentário":
                         RegistrarComentario = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['RegistrarComentario'] = RegistrarComentario
-                    else if Dados.split(":")[0] == "Encerrar chamado":
+                    elif Dados.split(":")[0] == "Encerrar chamado":
                         EncerrarChamado = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['EncerrarChamado'] = EncerrarChamado
                     return(NovosDadosEmJSON)
