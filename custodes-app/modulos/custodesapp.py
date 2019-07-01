@@ -4,8 +4,19 @@
 '''
 import re, json
 from django import forms
+
+class PegaRelatorio(forms.Form):
+    '''
+            PegaRelatorio:
     
-class CustodesApp(forms.Form):
+            Pega o relatório inserido na página inicial da aplicação
+    '''
+    
+    relatorio = forms.CharField(
+                  widget = forms.Textarea(
+                  attrs = {'placeholder': 'Cole aqui o relatório gerado pela CA'}),label='')
+    
+class CustodesApp():
     # abre os arquivos JSON para extração de campos do relatório e tratamento 
     def __init__(self):
         with open('../dados/CamposPadroesEDelimitador.json','r') as Campos:
@@ -14,18 +25,7 @@ class CustodesApp(forms.Form):
              Substituicoes = json.load(Substitutos)              
         with Open('../dados/Urls.json','r') as Url:
              Urls = json.load(Url)
-    
-    def PegaRelatorio(self):
-        '''
-            PegaRelatorio:
-    
-            Pega o relatório inserido na página inicial da aplicação
-        '''
-    
-        relatorio = forms.CharField(
-                  widget = forms.Textarea(
-                  attrs = {'placeholder': 'Cole aqui o relatório gerado pela CA'}),label='')
-    
+     
     def Captura(self,Relatorio):
         '''
             Captura:

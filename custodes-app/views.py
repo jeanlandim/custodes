@@ -2,15 +2,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
 from .modulos.custodesapp import CustodesApp
+from .modulos.custodesapp import PegaRelatorio
 # Página inicial do site
 def Index(request):
-    if request.method == 'POST': 
-        Formulario = CustodesApp.PegaRelatorio(request.POST)
-        if Formulario.is_valid():
+   Formulario = PegaRelatorio(request.POST)
+   if request.method == 'POST': 
+      if Formulario.is_valid():
            return HttpResponseRedirect('coletando/') 
-    else:
-            Formulario = CustodesApp.PegaRelatorio()
-    return render(request,'index.html',{'form':Formulario}) 
+   return render(request,'index.html',{'form':Formulario}) 
 
 # Grava os dados crus, gerados pelo formulário, o formate na maneira correta e o abre
 # em seguida na nova requisição
