@@ -117,7 +117,7 @@ class CustodesApp():
                        NovosDadosEmJSON[NumeroDoChamado] = {}
                     else if Dados.split(":")[0] == "Usuário afetado":
                         UsuarioAfetado =  Dados.split(":")[1]
-                        NovosDadosEmJSON[NumeroDoChamado]['UsuarioAfetado'] = Usuario
+                        NovosDadosEmJSON[NumeroDoChamado]['UsuarioAfetado'] = UsuarioAfetado
                     else if Dados.split(":")[0] == "Responsável":
                         Responsavel = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['Responsavel'] = Responsavel
@@ -142,7 +142,7 @@ class CustodesApp():
                     else if Dados.split(":")[0] == "Registrar comentário":
                         RegistrarComentario = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['RegistrarComentario'] = RegistrarComentario
-                    else if Dados.split(":")[0] == "Encerrar chaamdo":
+                    else if Dados.split(":")[0] == "Encerrar chamado":
                         EncerrarChamado = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['EncerrarChamado'] = EncerrarChamado
                     return(NovosDadosEmJSON)
