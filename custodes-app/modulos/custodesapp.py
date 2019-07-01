@@ -22,7 +22,7 @@ class CustodesApp():
          self.Regexs = {"CamposPadroes":[ "(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status:).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)", "(?=Responsável:).+?(?=,)", "(?=Grupo atribuído:).+?(?=Nível)",
                         "(?=Área do incidente:|Área da solicitação:).+?(?=Item)", "(?=Item de configuração:).+?(?=ChargeBack)", "(?=Descrição:).+?(?=Interrupção|Histórico)", "Script(?!.*Script).+?(?=Registrar comentário|Encerrar chamado)",
                         "(?=Encerrar).+?(?=Pai:)", "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"],
-                        "DelimitadorDeChamados":["(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"] }
+                        "DelimitadorDeChamados":"(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"}
          self.Substituicoes = { "CaracteresIndesejados": ["[","]","\'"],
                                "CamposNegritos":["Usuário afetado","Responsável","Área da solicitação", "Item de configuração","Descrição","Status","Grupo atribuído", "Área do incidente","Script vinculado","Encerrar chamado", "Registrar Comentário"], 
                                "Substituir":["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação"],
