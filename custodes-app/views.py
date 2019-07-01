@@ -1,7 +1,7 @@
 # custodes-app/views.py
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
-from .modulos.custodesapp import Formatar, PegaRelatorio, Captura
+from .modulos.custodesapp import CustodesApp
 # Página inicial do site
 def Index(request):
     if request.method == 'POST': 
