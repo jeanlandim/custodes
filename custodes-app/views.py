@@ -1,7 +1,7 @@
 # custodes-app/views.py
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
-from .modulos.custodesapp import Formatar,
+from .modulos.custodesapp import Formatar, PegaRelatorio, Captura
 # Página inicial do site
 def Index(request):
     if request.method == 'POST': 
@@ -18,5 +18,4 @@ def Coleta(request):
     # Coleta os dados do relatório gerado na página inicial do app
     Dados = request.POST.get('relatorio')
     Chamados = Formatar(Captura(Dados))
-    chamados = Captura(dados)
     return render(request,'relatorio_final.html',{'chamados':Chamados}) # os insere na nova página
