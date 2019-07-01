@@ -16,5 +16,5 @@ def Index(request):
 def Coleta(request):
     # Coleta os dados do relatório gerado na página inicial do app
     Dados = request.POST.get('relatorio')
-    Chamados = CustodesApp.Formatar(CustodesApp.Captura(Dados))
+    Chamados = CustodesApp().Formatar(CustodesApp().Captura(Dados))
     return render(request,'relatorio_final.html',{'chamados':Chamados}) # os insere na nova página

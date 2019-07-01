@@ -19,12 +19,12 @@ class PegaRelatorio(forms.Form):
 class CustodesApp():
     # abre os arquivos JSON para extração de campos do relatório e tratamento 
     def __init__(self):
-        with open('../dados/CamposPadroesEDelimitador.json','r') as Campos:
-             Regexs = json.load(Campos)
-        with open('../dados/Substitutos.json','r') as Substitutos:
-             Substituicoes = json.load(Substitutos)              
-        with Open('../dados/Urls.json','r') as Url:
-             Urls = json.load(Url)
+        with open('./custodes-app/dados/CamposPadroesEDelimitador.json','r') as Campos:
+             self.Regexs = json.load(Campos)
+        with open('./custodes-app/dados/Substitutos.json','r') as Substitutos:
+             self.Substituicoes = json.load(Substitutos)              
+        with Open('./custodes-app/dados/Urls.json','r') as Url:
+             self.Urls = json.load(Url)
      
     def Captura(self,Relatorio):
         '''
@@ -48,7 +48,7 @@ class CustodesApp():
             Chamado[Chave] = [] # cria lista para cada Chamados
     
         ChamadosFatiados = re.findall(DelimitadorDeChamados,Relatorio,re.MULTILINE+re.DOTALL)
-        for Iteracao in range(TotalDeChamados): # pega o número de chave
+        for Iteracao in range(TotalDeChamados): # pega o númearo de chave
             for Campo in CamposPadroes: # pega as expressões regulares de cada campo 
                 ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL) # compila a expressão regular 
                 for _Campo in ExprReg.findall(ChamadosFatiados[Iteracao]): # pega o campo no chamado
