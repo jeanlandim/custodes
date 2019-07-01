@@ -42,8 +42,8 @@ class CustodesApp():
                 O metódo principal dessa defe é Capture(), que será responsável por toda a exceução
         '''
 
-        DelimitadorDeChamados = list(self.Regexs['DelimitadorDeChamados']) 
-        CamposPadroes = list(self.Regexs['CamposPadroes'])
+        DelimitadorDeChamados = self.Regexs['DelimitadorDeChamados']
+        CamposPadroes = self.Regexs['CamposPadroes']
         TotalDeChamados = len(re.findall(CamposPadroes[0],Relatorio,re.MULTILINE+re.DOTALL))
         Chamado = {}
     
@@ -72,7 +72,7 @@ class CustodesApp():
             Formata o chamado que já foi capturado e extraido. No momento há dois tipos de formatos que serão utilizados: HTML e JSON.
         '''
     
-        UrlDoServiceDesk = self.Urls["Urls"]
+        UrlDoServiceDesk = self.Urls
     
         def PreFormatacao(self,RelatorioCru):
             DadosLimpos = []
@@ -149,5 +149,5 @@ class CustodesApp():
                         EncerrarChamado = Dados.split(":")[1]
                         NovosDadosEmJSON[NumeroDoChamado]['EncerrarChamado'] = EncerrarChamado
                     return(NovosDadosEmJSON)
-            Formatacao("HTML")
+            return(Formatacao("HTML"))
 

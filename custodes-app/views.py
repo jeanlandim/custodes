@@ -5,12 +5,13 @@ from .modulos.custodesapp import CustodesApp
 from .modulos.custodesapp import PegaRelatorio
 # Página inicial do site
 def Index(request):
-   Formulario = PegaRelatorio(request.POST)
-   if request.method == 'POST': 
-      if Formulario.is_valid():
-           return HttpResponseRedirect('coletando/') 
-   return render(request,'index.html',{'form':Formulario}) 
-
+    if request.method == 'POST': 
+       form = PegaRelatorio(request.POST)
+       if form.is_valid():
+          return HttpResponseRedirect('coletando/') 
+    else:
+       form = PegaRelatorio()
+    return render(request,'index.html',{'form':form}) 
 # Grava os dados crus, gerados pelo formulário, o formate na maneira correta e o abre
 # em seguida na nova requisição
 def Coleta(request):
