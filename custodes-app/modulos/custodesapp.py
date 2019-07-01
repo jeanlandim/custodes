@@ -15,7 +15,7 @@ class CustodesApp(forms.Form):
         with Open('../dados/Urls.json','r') as Url:
              Urls = json.load(Url)
     
-    def PegaRelatorio():
+    def PegaRelatorio(self):
         '''
             PegaRelatorio:
     
@@ -26,7 +26,7 @@ class CustodesApp(forms.Form):
                   widget = forms.Textarea(
                   attrs = {'placeholder': 'Cole aqui o relatório gerado pela CA'}),label='')
     
-    def Captura(Relatorio):
+    def Captura(self,Relatorio):
         '''
             Captura:
                 
@@ -62,7 +62,7 @@ class CustodesApp(forms.Form):
     
         return(ChamadosProntos)
        
-    def Formatar(RelatorioCru):
+    def Formatar(self,RelatorioCru):
         '''
             Formatar:
     
@@ -135,7 +135,6 @@ class CustodesApp(forms.Form):
                     else if Dados.split(":")[0] == "Encerrar chaamdo":
                         EncerrarChamado = Dados.split(":")[1]
                 
-
                     NovosDadosEmJSON[NumeroDoChamado].append({'Chamado':NumeroDoChamado,
                            'UsuarioAfetado':UsuarioAfetado,
                            'Responsavel':Responsavel,
@@ -144,7 +143,7 @@ class CustodesApp(forms.Form):
                            'Descricao':Descricao,
                            'Status':Status,
                            'Grupo':GrupoAtribuido,
-                           'Script':Script
+                           'Script':Script,
                            'RegistrarComentario':RegistrarComentario,
                            'Encerrar':EncerrarChamado})
                     return(NovosDadosEmJSON)
