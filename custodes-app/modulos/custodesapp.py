@@ -5,7 +5,7 @@
 import re, json
 from django import forms
     
-class CustodesApp(forms.Form):
+class CustodesApp():
     # abre os arquivos JSON para extração de campos do relatório e tratamento 
     def __init__(self):
         with open('../dados/CamposPadroesEDelimitador.json','r') as Campos:
@@ -15,7 +15,7 @@ class CustodesApp(forms.Form):
         with Open('../dados/Urls.json','r') as Url:
              Urls = json.load(Url)
     
-    def PegaRelatorio(self):
+    def PegaRelatorio(self,forms.Form):
         '''
             PegaRelatorio:
     
