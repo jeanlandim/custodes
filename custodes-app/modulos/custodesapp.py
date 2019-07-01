@@ -114,38 +114,37 @@ class CustodesApp():
                     if Dados.split(":")[0] == "Incidente" or Dados.split(":")[0] == "Solicitação": # pega o número do chamado para usar como chave no arquivo JSON 
                        NumeroDoChamado = Dados.split(":")[1]
                        NumeroDoChamado = NumeroDoChamado.replace(" ","")
+                       NovosDadosEmJSON[NumeroDoChamado] = {}
                     else if Dados.split(":")[0] == "Usuário afetado":
-                        UsuarioAfetado = Dados.split(":")[1]
+                        UsuarioAfetado =  Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['UsuarioAfetado'] = Usuario
                     else if Dados.split(":")[0] == "Responsável":
                         Responsavel = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['Responsavel'] = Responsavel
                     else if Dados.split(":")[0] == "Tipo da solicitação" or Dados.split(":")[0] == "Tipo do incidente":
                         _Tipo = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['Tipo'] = _Tipo
                     else if Dados.split(":")[0] == "Item de configuração":
                         IC = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['IC'] = IC
                     else if Dados.split(":")[0] == "Descrição":
                         Descricao = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['Descricao'] = Descricao
                     else if Dados.split(":")[0] == "Status":
                         Status = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['Status'] = Status
                     else if Dados.split(":")[0] == "Grupo atribuído":
                         GrupoAtribuido = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['GrupoAtribuido'] = GrupoAtribuido
                     else if Dados.split(":")[0] == "Script vinculado":
                         Script = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['Script'] = Script
                     else if Dados.split(":")[0] == "Registrar comentário":
                         RegistrarComentario = Dados.split(":")[1]
+                        NovosDadosEmJSON[NumeroDoChamado]['RegistrarComentario'] = RegistrarComentario
                     else if Dados.split(":")[0] == "Encerrar chaamdo":
                         EncerrarChamado = Dados.split(":")[1]
-                
-                    NovosDadosEmJSON[NumeroDoChamado].append({'Chamado':NumeroDoChamado,
-                           'UsuarioAfetado':UsuarioAfetado,
-                           'Responsavel':Responsavel,
-                           'Tipo':_Tipo,
-                           'IC':IC,
-                           'Descricao':Descricao,
-                           'Status':Status,
-                           'Grupo':GrupoAtribuido,
-                           'Script':Script,
-                           'RegistrarComentario':RegistrarComentario,
-                           'Encerrar':EncerrarChamado})
+                        NovosDadosEmJSON[NumeroDoChamado]['EncerrarChamado'] = EncerrarChamado
                     return(NovosDadosEmJSON)
             Formatacao("HTML")
 
