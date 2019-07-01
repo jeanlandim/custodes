@@ -1,3 +1,7 @@
+'''
+    Importa as bibliotecas de Expressões regulares (re) e JSON (json).
+    Importa também classe de formulário do Django
+'''
 import re, json
 from django import forms
     
@@ -35,7 +39,6 @@ class CustodesApp(forms.Form):
                 O metódo principal dessa defe é Capture(), que será responsável por toda a exceução
         '''
 
-    
         DelimitadorDeChamados = list(self.Regexs['DelimitadorDeChamados']) 
         CamposPadroes = list(self.Regexs['CamposPadroes'])
         TotalDeChamados = len(re.findall(CamposPadroes[0],Relatorio,re.MULTILINE+re.DOTALL))
