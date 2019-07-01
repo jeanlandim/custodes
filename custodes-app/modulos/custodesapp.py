@@ -94,7 +94,7 @@ class CustodesApp():
             NovosDadosEmJSON = {}
             CamposEmNegrito = self.Substitucoes['CamposNegritos']
 
-            for Dados in DadosLimpos 
+            for Dados in DadosLimpos:
                 Dados = str(Dados)
                 # gera o relatório em HTML
                 if Tipo is Tipos[0]:
@@ -102,12 +102,12 @@ class CustodesApp():
                           if Dados.split(":")[0] == Campos:
                              Dados = Dados.replace(Campos,"<b>"+Campos+"</b>") 
 
-                     if Dados.split(":")[0] == "Incidente" or Dados.split(":")[0] == "Solicitação": # transforma em hyperlink o campo referente ao chamado
-                        NumeroDoChamado = Dados.split(":")[1]
-                        NumeroDoChamado = NumeroDoChamado.replace(" ","")
-                        Dados = "<a href="+UrlDoServiceDesk+NumeroDoChamado+" target=\"_blank\">"+Dados+"</a>" 
+                          if Dados.split(":")[0] == "Incidente" or Dados.split(":")[0] == "Solicitação": # transforma em hyperlink o campo referente ao chamado
+                             NumeroDoChamado = Dados.split(":")[1]
+                             NumeroDoChamado = NumeroDoChamado.replace(" ","")
+                             Dados = "<a href="+UrlDoServiceDesk+NumeroDoChamado+" target=\"_blank\">"+Dados+"</a>" 
 
-                     NovosDadosEmHTML.append(Dados)
+                             NovosDadosEmHTML.append(Dados)
                      return(NovosDadosEmHTML)
                 else: # gera o arquivo JSON
                     # numero do chamado será a chave para informações de determinado chamado
@@ -147,4 +147,5 @@ class CustodesApp():
                            'RegistrarComentario':RegistrarComentario,
                            'Encerrar':EncerrarChamado})
                     return(NovosDadosEmJSON)
+            Formatacao("HTML")
 
