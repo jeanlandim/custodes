@@ -1,0 +1,17 @@
+[
+    {
+       "CamposPadroes":[
+          "(?=Solicitação:|Incidente:).+?(?=Em)",
+          "(?=Status:).+?(?=Ativo:)",
+          "(?=Usuário afetado:).+?(?=,)",
+          "(?=Responsável:).+?(?=,)",
+          "(?=Grupo atribuído:).+?(?=Nível)",
+          "(?=Área do incidente:|Área da solicitação:).+?(?=Item)",
+          "(?=Item de configuração:).+?(?=ChargeBack)",
+          "(?=Descrição:).+?(?=Interrupção|Histórico)",
+          "Script(?!.*Script).+?(?=Registrar comentário|Encerrar chamado)",
+          "(?=Encerrar).+?(?=Pai:)",
+          "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"],
+       "DelimitadorDeChamados":["(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"]
+    } 
+]

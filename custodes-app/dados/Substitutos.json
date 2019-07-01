@@ -1,0 +1,11 @@
+[
+    {
+    "CaracteresIndesejados": ["[","]","\'"],
+    "CamposNegritos":["Usuário afetado","Responsável","Área da solicitação",
+                      "Item de configuração","Descrição","Status","Grupo atribuído",
+                      "Área do incidente","Script vinculado","Encerrar chamado",
+                      "Registrar Comentário"],
+    "Substituir":["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação"],
+    "Substitutos":[" "," ","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação"]
+    }
+]
