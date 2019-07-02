@@ -13,15 +13,17 @@ class Captura():
                                "Área do incidente","Script vinculado","Encerrar chamado", "Registrar Comentário"], 
         self.Substituir = ["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação"]
         self.Substitutos = [" "," ","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação"]      
-        self.Chamado = {}
 
-    def __Chamado__(self,):
-         
+    ''' Cria uma lista para cada chave (que estão em ordem númerica) no dicionário 'Chamado' '''
+    def __Chamado__(self,TotalDeChamados):
+        Chamados = {chave:[] for chave in range(TotalDeChamados)}
+        return(Chamados)
 
     def Captura(self,Relatorio):
+        ''' Pega o total de chamados para criar chaves no dicionário 'Chamados' '''
         TotalDeChamados = len(re.findall(CamposPadroes[0],Relatorio,re.MULTILINE+re.DOTALL))
-
-               ChamadosFatiados = re.findall(DelimitadorDeChamados,Relatorio,re.MULTILINE+re.DOTALL)
+        
+        ChamadosFatiados = re.findall(DelimitadorDeChamados,Relatorio,re.MULTILINE+re.DOTALL)
         for Iteracao in range(TotalDeChamados): # pega o númearo de chave
             for Campo in CamposPadroes: # pega as expressões regulares de cada campo 
                 ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL) # compila a expressão regular 
