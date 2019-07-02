@@ -22,6 +22,10 @@ class Captura():
     def Captura(self,Relatorio):
         ''' Pega o total de chamados para criar chaves no dicionário 'Chamados' '''
         TotalDeChamados = len(re.findall(CamposPadroes[0],Relatorio,re.MULTILINE+re.DOTALL))
+        ''' Retorna o dicionário criado para na váriavel 'Chamado' '''
+        Chamado = __Chamado__(TotalDeChamados)
+        ''' Pega os chamados já fatiados '''
+        ChamadosFatiados = __FatiaOsChamados__(Relatorio)
         
         for Chave in range(TotalDeChamados): ''' Pega o número do chamado ''' 
             for Campo in CamposPadroes: ''' Pega o padrão de dada expressão regular para extrair o campo necessário ''' 
