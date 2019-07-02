@@ -1,6 +1,6 @@
 import re, json
 class Captura():
-
+    ''' Captura os chamados, os organiza e extraí os campos necessários para auditoria '''
     def __init__(self):
         self.CamposPadroes = ["(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status:).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)", "(?=Responsável:).+?(?=,)",
                               "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=Item)", "(?=Item de configuração:).+?(?=ChargeBack)",
@@ -8,27 +8,25 @@ class Captura():
                               "Script(?!.*Script).+?(?=Registrar comentário|Encerrar chamado)",
                               "(?=Encerrar).+?(?=Pai:)", "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"]
         self.DelimitadorDeChamados = "(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"
-        self.CaracteresIndesejados = ["[","]","\'"],
-        self.CamposNegritos = ["Usuário afetado","Responsável","Área da solicitação", "Item de configuração","Descrição","Status","Grupo atribuído", 
-                               "Área do incidente","Script vinculado","Encerrar chamado", "Registrar Comentário"], 
-        self.Substituir = ["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação"]
-        self.Substitutos = [" "," ","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação"]      
 
     ''' Cria uma lista para cada chave (que estão em ordem númerica) no dicionário 'Chamado' '''
     def __Chamado__(self,TotalDeChamados):
         Chamados = {chave:[] for chave in range(TotalDeChamados)}
         return(Chamados)
 
+    ''' Separe os chamados do relatório e os devolve fatiados (em forma de lista) '''
+    def __FatiaOsChamados__(self,Relatorio):
+        ChamadosFatiados = re.findall(DelimitadorDeChamados,Relatorio,re.MULTILINE+re.DOTALL)
+        return(ChamadosFatiados)
+
     def Captura(self,Relatorio):
         ''' Pega o total de chamados para criar chaves no dicionário 'Chamados' '''
         TotalDeChamados = len(re.findall(CamposPadroes[0],Relatorio,re.MULTILINE+re.DOTALL))
         
-        ChamadosFatiados = re.findall(DelimitadorDeChamados,Relatorio,re.MULTILINE+re.DOTALL)
-        for Iteracao in range(TotalDeChamados): # pega o númearo de chave
-            for Campo in CamposPadroes: # pega as expressões regulares de cada campo 
-                ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL) # compila a expressão regular 
-                for _Campo in ExprReg.findall(ChamadosFatiados[Iteracao]): # pega o campo no chamado
-                    Chave = Iteracao # define os números das chaves que estão em ordem númerica 
+        for Chave in range(TotalDeChamados): ''' Pega o número do chamado ''' 
+            for Campo in CamposPadroes: ''' Pega o padrão de dada expressão regular para extrair o campo necessário ''' 
+                ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL) ''' Conpila a expresão regular da váriavel 'Campo' '''
+                for _Campo in ExprReg.findall(ChamadosFatiados[Chave]): ''' Retorna o campo extraído '''
                     Chamado[Chave].append(_Campo)
    
         ChamadosProntos = []
