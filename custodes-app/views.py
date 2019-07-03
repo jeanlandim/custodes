@@ -29,7 +29,7 @@ def Coleta(request):
     ''' Formate os dados extraidos do relatório e o formate '''
     def Formate(Dados):
         _Formate = Formatar()
-        return(_Formate.Formatacao(Dados)
+        return(_Formate.Formatacao(Dados))
                
     ''' Pegue os dados capturados e logo em seguida o formate '''           
     Chamados = Formate(Capture(Dados))

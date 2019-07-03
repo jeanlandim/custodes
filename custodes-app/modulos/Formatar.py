@@ -8,7 +8,7 @@ class Formatar():
          self.Substituir = ["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação"]
          self.Substitutos = [" "," ","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação"]     
 
-        ''' Formata o relatório (já tratado) em HTML ou JSON. (No futuro poderá haver outras opçções '''    
+      ''' Formata o relatório (já tratado) em HTML ou JSON. (No futuro poderá haver outras opçções '''    
       def Formatacao(RelatorioCru):
           DadosFormatados = None
           ''' Pré formate o relatório tirando caracteres indesejados. Está função é um decorator que será utilizado para 
@@ -24,25 +24,26 @@ class Formatar():
                       TextoCru = TextoCru.replace(self.Substituir[Indice],self.Substitutos[Indice])
                   DadosLimpos.append(TextoCru)
               
-              DadosFormatados = Formato(DadosLimpos) ''' Passa o dados formatados para tal formato '''
-          
+              DadosFormatados = Formato(DadosLimpos) 
+
           @PreFormatacao 
           def HTML(self,DadosLimpos):
-            ''' Pega o relatório e o formate em HTML. '''
+              ''' Pega o relatório e o formate em HTML. '''
               NovosDadosEmHTML = []
               for Dados in DadosLimpos:
                   Dados = str(Dados)
                   ''' Gera o relatório em HTML ''' 
                   if Tipo is Tipos[0]:
-                     for Campos in self.CamposEmNegrito: ''' transforma tais campos em negrito, utilizando o tag <b> '''
+                     ''' transforma tais campos em negrito, utilizando o tag <b> '''
+                     for Campos in self.CamposEmNegrito:
                          if Dados.split(":")[0] == Campos:
                             Dados = Dados.replace(Campos,"<b>"+Campos+"</b>") 
-
-                         if Dados.split(":")[0] == "Incidente" or Dados.split(":")[0] == "Solicitação": '''  transforma em hyperlink o campo referente ao chamado '''
+                            '''  transforma em hyperlink o campo referente ao chamado '''
+                         if Dados.split(":")[0] == "Incidente" or Dados.split(":")[0] == "Solicitação":
                             NumeroDoChamado = Dados.split(":")[1]
                             NumeroDoChamado = NumeroDoChamado.replace(" ","")
                             Dados = "<a href="+UrlDoServiceDesk+NumeroDoChamado+" target=\"_blank\">"+Dados+"</a>" 
 
                             NovosDadosEmHTML.append(Dados)
-               return(NovosDadosEmHTML)
+              return(NovosDadosEmHTML)
           return(DadosFormatados)

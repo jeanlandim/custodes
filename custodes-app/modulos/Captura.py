@@ -26,11 +26,15 @@ class Captura():
         Chamado = __Chamado__(TotalDeChamados)
         ''' Pega os chamados já fatiados '''
         ChamadosFatiados = __FatiaOsChamados__(Relatorio)
-        
-        for Chave in range(TotalDeChamados): ''' Pega o número do chamado ''' 
-            for Campo in CamposPadroes: ''' Pega o padrão de dada expressão regular para extrair o campo necessário ''' 
-                ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL) ''' Conpila a expresão regular da váriavel 'Campo' '''
-                for _Campo in ExprReg.findall(ChamadosFatiados[Chave]): ''' Retorna o campo extraído '''
+
+        ''' Pega o número do chamado ''' 
+        for Chave in range(TotalDeChamados):
+            ''' Pega o padrão de dada expressão regular para extrair o campo necessário ''' 
+            for Campo in CamposPadroes:
+                ''' Conpila a expresão regular da váriavel 'Campo' '''
+                ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL)
+                ''' Retorna o campo extraído '''
+                for _Campo in ExprReg.findall(ChamadosFatiados[Chave]):
                     Chamado[Chave].append(_Campo)
    
         ChamadosProntos = []
