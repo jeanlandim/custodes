@@ -16,21 +16,21 @@ class Captura():
 
     ''' Separe os chamados do relatório e os devolve fatiados (em forma de lista) '''
     def __FatiaOsChamados__(self,Relatorio):
-        ChamadosFatiados = re.findall(DelimitadorDeChamados,Relatorio,re.MULTILINE+re.DOTALL)
+        ChamadosFatiados = re.findall(self.DelimitadorDeChamados,Relatorio,re.MULTILINE+re.DOTALL)
         return(ChamadosFatiados)
 
     def Captura(self,Relatorio):
         ''' Pega o total de chamados para criar chaves no dicionário 'Chamados' '''
-        TotalDeChamados = len(re.findall(CamposPadroes[0],Relatorio,re.MULTILINE+re.DOTALL))
+        TotalDeChamados = len(re.findall(self.CamposPadroes[0],Relatorio,re.MULTILINE+re.DOTALL))
         ''' Retorna o dicionário criado para na váriavel 'Chamado' '''
-        Chamado = __Chamado__(TotalDeChamados)
+        Chamado = self.__Chamado__(TotalDeChamados)
         ''' Pega os chamados já fatiados '''
-        ChamadosFatiados = __FatiaOsChamados__(Relatorio)
+        ChamadosFatiados = self.__FatiaOsChamados__(Relatorio)
 
         ''' Pega o número do chamado ''' 
         for Chave in range(TotalDeChamados):
             ''' Pega o padrão de dada expressão regular para extrair o campo necessário ''' 
-            for Campo in CamposPadroes:
+            for Campo in self.CamposPadroes:
                 ''' Conpila a expresão regular da váriavel 'Campo' '''
                 ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL)
                 ''' Retorna o campo extraído '''
