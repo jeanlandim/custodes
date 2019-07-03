@@ -23,4 +23,7 @@ def Coleta(request):
     ''' Captura os dados (do relatório) e extraía os campos '''
     ''' Formate os dados extraidos do relatório e o formate '''
     Chamados = Formatar().Formatacao(Captura().Captura(Dados))
+    ''' Se a lista estiver vazia, retorne uma mensagem de erro '''
+    if not Chamados:
+        Chamados = ["<script>alert(\"Relatório inválido. PRESSIONE OK PARA VOLTAR!\");window.history.back();</script>"]
     return render(request,'relatorio_final.html',{'chamados':Chamados}) # os insere na nova página
