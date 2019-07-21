@@ -5,8 +5,8 @@ class Formatar():
          self.CamposEmNegrito = ["Usuário afetado","Responsável","Tipo da solicitação", "Item de configuração","Descrição","Status","Grupo atribuído", 
                                 "Tipo do incidente","Script vinculado","Encerrar chamado", "Registrar Comentário"]
          self.CaracteresIndesejados = ["[","]","\'"]
-         self.Substituir = ["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação"]
-         self.Substitutos = [" "," ","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação"]
+         self.Substituir = ["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação","Desc:"]
+         self.Substitutos = [" ","<br>","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação",""]
          self.DadosFormatados = []
 
       ''' Formata o relatório (já tratado) em HTML ou JSON. (No futuro poderá haver outras opçções '''    
@@ -41,6 +41,7 @@ class Formatar():
                      if Dados.split(":")[0] == "Incidente" or Dados.split(":")[0] == "Solicitação":
                         NumeroDoChamado = Dados.split(":")[1]
                         NumeroDoChamado = NumeroDoChamado.replace(" ","")
+                        NumeroDoChamado = NumeroDoChamado.replace("<br>","") 
                         Dados = "<a href="+self.Url+NumeroDoChamado+" target=\"_blank\">"+Dados+"</a>" 
                         NovosDadosEmHTML.append(Dados)
               return(NovosDadosEmHTML)

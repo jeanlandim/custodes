@@ -3,10 +3,10 @@ class Captura():
     ''' Captura os chamados, os organiza e extraí os campos necessários para auditoria '''
     def __init__(self):
         self.CamposPadroes = ["(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status:).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)", "(?=Responsável:).+?(?=,)",
-                              "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=Item)", "(?=Item de configuração:).+?(?=ChargeBack)",
+                              "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=\r\n)", "(?=Item de configuração:).+?(?=ChargeBack)",
                               "(?=Descrição:).+?(?=Interrupção|Histórico)",
                               "Script(?!.*Script).+?(?=Registrar comentário|Encerrar chamado)",
-                              "(?=Encerrar).+?(?=Pai:)", "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"]
+                              "(?=Encerrar).+?(?=Pai:|System_AHD_generated)", "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"]
         self.DelimitadorDeChamados = "(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"
 
     ''' Cria uma lista para cada chave (que estão em ordem númerica) no dicionário 'Chamado' '''
