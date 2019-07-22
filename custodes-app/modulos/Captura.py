@@ -40,7 +40,8 @@ class Captura():
             ''' Nem todo chamado tem o campo de script vinculado, e muitas das vezes quando há, é o script de abertura
             '''
             if len(Chamado[Chave])<10:
-               Chamado[Chave].append("Não foi encontrado scripts neste chamado. É provável que a solução foi digitada. Para melhor verificação, acesso chamado")
+               Chamado[Chave].append("ALERTA!: Não foi encontrado scripts neste chamado. É provável que a solução foi digitada. Para melhor verificação, acesso chamado")
+            
             
             
         ChamadosProntos = []
