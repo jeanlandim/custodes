@@ -2,10 +2,12 @@ import re, json
 class Captura():
     ''' Captura os chamados, os organiza e extraí os campos necessários para auditoria '''
     def __init__(self):
+        ''' '''
+        self.Responsavel = ''
         self.CamposPadroes = ["(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status:).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)", "(?=Responsável:).+?(?=,)",
                               "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=\r\n)", "(?=Item de configuração:).+?(?=ChargeBack)",
                               "(?=Descrição:).+?(?=Interrupção|Histórico)",
-                              "Script(?!.*Script).+?(?=Registrar comentário|Encerrar chamado)",
+                              "Script(?!.*Script).+?(?="+self.Responsavel+")",
                               "(?=Encerrar).+?(?=Pai:|System_AHD_generated)", "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"]
         self.DelimitadorDeChamados = "(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"
 
@@ -30,13 +32,19 @@ class Captura():
         ''' Pega o número do chamado que será representado por números (esses números serão 
             a ordem dos chamados capturados)''' 
         for Chave in range(TotalDeChamados):
-            ''' Pega o padrão de dada expressão regular para extrair o campo necessário ''' 
+            ''' Pega o padrão de dada expressão regular para extrair o campo necessário '''
+            ''' Variável (ControleDoFor) para controle do loop 'for' '''
+            ControleDoFor = 0
             for Campo in self.CamposPadroes:
                 ''' Compila a expresão regular da váriavel 'Campo' '''
                 ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL)
                 ''' Retorna o campo extraído '''
                 for _Campo in ExprReg.findall(ChamadosFatiados[Chave]):
                     Chamado[Chave].append(_Campo)
+                    
+                if ControleDoFor == 2:
+                    self.Responsavel = _Campo
+                ControleDoFor += 1
             ''' Nem todo chamado tem o campo de script vinculado, e muitas das vezes quando há, é o script de abertura
             '''
             if len(Chamado[Chave])<10:
