@@ -27,16 +27,22 @@ class Captura():
         ''' Pega os chamados já fatiados '''
         ChamadosFatiados = self.__FatiaOsChamados__(Relatorio)
 
-        ''' Pega o número do chamado ''' 
+        ''' Pega o número do chamado que será representado por números (esses números serão 
+            a ordem dos chamados capturados)''' 
         for Chave in range(TotalDeChamados):
             ''' Pega o padrão de dada expressão regular para extrair o campo necessário ''' 
             for Campo in self.CamposPadroes:
-                ''' Conpila a expresão regular da váriavel 'Campo' '''
+                ''' Compila a expresão regular da váriavel 'Campo' '''
                 ExprReg = re.compile(Campo,re.MULTILINE+re.DOTALL)
                 ''' Retorna o campo extraído '''
                 for _Campo in ExprReg.findall(ChamadosFatiados[Chave]):
                     Chamado[Chave].append(_Campo)
-   
+            ''' Nem todo chamado tem o campo de script vinculado, e muitas das vezes quando há, é o script de abertura
+            '''
+            if len(Chamado[Chave])<10:
+               Chamado[Chave].append("Não foi encontrado scripts neste chamado. É provável que a solução foi digitada. Para melhor verificação, acesso chamado")
+            
+            
         ChamadosProntos = []
         for Chave in range(TotalDeChamados):
             for Conteudo in Chamado[Chave]:
