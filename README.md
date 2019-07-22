@@ -19,17 +19,16 @@ Abaixo, o exemplo típico de um chamado com tais itens e como são interligados:
 ![custodes_venn.png](https://github.com/jeanlandim/custodes/raw/master/imgs/custodes_venn.png)
 
 # Changelog
-* Versão Alpha atingida (1.0a)
-* Versão BETA:
 
-# 30/06/2019:
+## 21/07/2018:
+* Refeita a template final de formatação dos chamados utilizando o content container de cards
+* Retirado o JSON para suporte a auditoria
+* Versão Alpha atingida (1.0a)
+
+## 30/06/2019:
 * Abrir chamados em uma nova aba.
 * Adicionado o JSON para suporte a auditoria
 * Refatorado o código
-
-# 21/07/2018:
-* Refeita a template final de formatação dos chamados utilizando o content container de cards
-* Retirado o JSON para suporte a auditoria
 
 # TODO
 Refatorar o código para uma semântica mais acessível e profissional do código nas fases beta e estável do programa, e implementar melhorias e recursos de acordo com as exigências da equipe, gestão e supervisão.
