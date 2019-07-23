@@ -3,10 +3,10 @@ class Formatar():
       def __init__(self):
          self.Url = "http://contas.tcu.gov.br/CAisd/pdmweb.exe?OP=SEARCH+FACTORY=cr+SKIPLIST=1+QBE.EQ.ref_num="
          self.CamposEmNegrito = ["Usuário afetado","Responsável","Tipo da solicitação", "Item de configuração","Descrição","Status","Grupo atribuído", 
-                                "Tipo do incidente","Script vinculado","Encerrar chamado", "Registrar Comentário"]
+                                "Tipo do incidente","Script(s) vinculado(s)","Encerrar chamado", "Registrar Comentário"]
          self.CaracteresIndesejados = ["[","]","\'"]
          self.Substituir = ["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação","Desc:"]
-         self.Substitutos = [" ","<br>","Script vinculado:","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação",""]
+         self.Substitutos = [" ","<br>","Script(s) vinculado(s):","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação",""]
          self.DadosFormatados = []
 
       ''' Formata o relatório (já tratado) em HTML ou JSON. (No futuro poderá haver outras opçções '''    

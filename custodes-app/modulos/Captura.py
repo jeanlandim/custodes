@@ -3,11 +3,11 @@ class Captura():
     ''' Captura os chamados, os organiza e extraí os campos necessários para auditoria '''
     def __init__(self):
         ''' '''
-        self.Responsavel = ''
+        self.Responsavel = '__RESPONSAVEL__'
         self.CamposPadroes = ["(?=Solicitação:|Incidente:).+?(?=Em)", "(?=Status:).+?(?=Ativo:)", "(?=Usuário afetado:).+?(?=,)", "(?=Responsável:).+?(?=,)",
                               "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=\r\n)", "(?=Item de configuração:).+?(?=ChargeBack)",
                               "(?=Descrição:).+?(?=Interrupção|Histórico)",
-                              "Script(?!.*Script).+?(?="+self.Responsavel+")",
+                              "(?=Script vinculado).+?(?= am| pm|"+self.Responsavel+", )",
                               "(?=Encerrar).+?(?=Pai:|System_AHD_generated)", "Registrar comentário(?!.*Registrar comentário).+?(?=, fechado)"]
         self.DelimitadorDeChamados = "(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"
 
@@ -41,16 +41,13 @@ class Captura():
                 ''' Retorna o campo extraído '''
                 for _Campo in ExprReg.findall(ChamadosFatiados[Chave]):
                     Chamado[Chave].append(_Campo)
-                    
-                if ControleDoFor == 2:
-                    self.Responsavel = _Campo
+                ''' Quando o nome do responsável pelo chamado for captura, armazene-o na váriavel 'Responsavel' '''    
+                if ControleDoFor == 3:
+                    ''' Pega somente o nome do responsável '''
+                    self.Responsavel = _Campo.split(':')[1]
+                    self.Responsavel = self.Responsavel.replace('\t',"")
+                    self.CamposPadroes[8] = self.CamposPadroes[8].replace("__RESPONSAVEL__",self.Responsavel)
                 ControleDoFor += 1
-            ''' Nem todo chamado tem o campo de script vinculado, e muitas das vezes quando há, é o script de abertura
-            '''
-            if len(Chamado[Chave])<10:
-               Chamado[Chave].append("ALERTA!: Não foi encontrado scripts neste chamado. É provável que a solução foi digitada. Para melhor verificação, acesso chamado")
-            
-            
             
         ChamadosProntos = []
         for Chave in range(TotalDeChamados):
