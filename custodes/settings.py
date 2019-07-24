@@ -25,7 +25,7 @@ SECRET_KEY = 'qy+37b^m6f6!hqc9uqt9ny6-n&-e4vq#5f0g33sery3q=tji!y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['jeanlandim.pythonanywhere.com','127.0.0.1','localhost/']
+ALLOWED_HOSTS = ['jeanlandim.pythonanywhere.com','127.0.0.1','10.22.0.83','localhost/']
 
 
 # Application definition
