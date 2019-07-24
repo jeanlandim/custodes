@@ -8,7 +8,7 @@ class Captura():
                               "(?=Grupo atribuído:).+?(?=Nível)","(?=Área do incidente:|Área da solicitação:).+?(?=\r\n)", "(?=Item de configuração:).+?(?=ChargeBack)",
                               "(?=Descrição:).+?(?=Interrupção|Histórico)",
                               "(?=Script vinculado).+?(?= am| pm|"+self.Responsavel+", )",
-                              "(?=Encerrar).+?(?=Pai:|System_AHD_generated)", "Registrar comentário(?!.*Registrar comentário).+?(?="+self.Responsavel+")"]
+                              "Registrar comentário(?!.*Registrar comentário).+?(?="+self.Responsavel+")","(?=Encerrar).+?(?=Pai:|System_AHD_generated)"]
         self.DelimitadorDeChamados = "(?=Solicitação:|Incidente:).+?(?=Tipo de serviço:)"
 
     ''' Cria uma lista para cada chave (que estão em ordem númerica) no dicionário 'Chamado' '''
@@ -47,12 +47,13 @@ class Captura():
                     self.Responsavel = _Campo.split(':')[1]
                     self.Responsavel = self.Responsavel.replace('\t',"")
                     self.CamposPadroes[8] = self.CamposPadroes[8].replace("__RESPONSAVEL__",self.Responsavel)
-                    self.CamposPadroes[10] = self.CamposPadroes[10].replace("__RESPONSAVEL__",self.Responsavel)
+                    self.CamposPadroes[9] = self.CamposPadroes[9].replace("__RESPONSAVEL__",self.Responsavel)
                 ControleDoFor += 1
             
         ChamadosProntos = []
         for Chave in range(TotalDeChamados):
             for Conteudo in Chamado[Chave]:
                 ChamadosProntos.append(Conteudo)
-    
+   
+        
         return(ChamadosProntos)

@@ -3,7 +3,7 @@ class Formatar():
       def __init__(self):
          self.Url = "http://contas.tcu.gov.br/CAisd/pdmweb.exe?OP=SEARCH+FACTORY=cr+SKIPLIST=1+QBE.EQ.ref_num="
          self.CamposEmNegrito = ["Usuário afetado","Responsável","Tipo da solicitação", "Item de configuração","Descrição","Status","Grupo atribuído", 
-                                "Tipo do incidente","Script(s) vinculado(s)","Encerrar chamado", "Registrar Comentário"]
+                                "Tipo do incidente","Script(s) vinculado(s)","Encerrar chamado", "Registrar comentário"]
          self.CaracteresIndesejados = ["[","]","\'"]
          self.Substituir = ["\t","\r\n","Script vinculado","Registrar comentário","Encerrar chamado","Causa raiz:","Área do incidente","Área da solicitação","Desc:"]
          self.Substitutos = [" ","<br>","Script(s) vinculado(s):","Registrar comentário:","Encerrar chamado:","","Tipo do incidente","Tipo da solicitação",""]
@@ -24,6 +24,7 @@ class Formatar():
                       TextoCru = TextoCru.replace(self.Substituir[Indice],self.Substitutos[Indice])
                   DadosLimpos.append(TextoCru)
               self.DadosFormatados = Formato(DadosLimpos) 
+               
 
           @PreFormatacao 
           def HTML(DadosLimpos):
@@ -45,5 +46,9 @@ class Formatar():
                         Dados = "<a href="+self.Url+NumeroDoChamado+" target=\"_blank\">"+Dados+"</a>" 
                         NovosDadosEmHTML.append(Dados)
               return(NovosDadosEmHTML)
-
+              f = open('debugg.txy','w')
+              f.write(str(NovosDadosEmHTML))
+              f.close()
+          
           return(self.DadosFormatados)
+    

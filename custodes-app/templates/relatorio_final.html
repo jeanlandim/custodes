@@ -11,13 +11,14 @@
 			{{campo}}  
 	   	</div> 
 		<div class="card-body">
-	   {% else %} 
-	   {{campo}}<br>
+	   {% else %}
+	    <br>
+	    {{campo}}
 	   {% endif %} 
 
 	   {% if "Encerrar chamado" in campo %}
 	       </div>
-	   	</div>
+	       </div>
 	   {% endif %}
 {% endfor %}
 {% endautoescape %} 
