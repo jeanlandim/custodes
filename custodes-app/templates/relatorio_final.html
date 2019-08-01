@@ -1,23 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 {% autoescape off %}
-<p>Para navegar entre os chamados pressione a tecla TAB.</p>
+<p align=center>Para navegar entre os chamados pressione a tecla TAB.</p>
+<p align=center>OBS: Na falta de script no chamado é provável que a solução foi digitada pelo responsável</p>
 {% for campo in chamados %}
-
    	   {% if "Solicitação:" in campo or "Incidente:" in campo %} 
+	   </div>
+	   </div>
 	   <div class="card bg-light mb-3" id='{{forloop.counter}}'>
 	   	<div class="card-header">
 			{{campo}}  
 	   	</div> 
 		<div class="card-body">
-	   {% else %} 
-	   {{campo}}<br>
+	   {% else %}
+	    <br>
+	    {{campo}}
 	   {% endif %} 
-
-	   {% if "Encerrar chamado" in campo %}
-	       </div>
-	   	</div>
-	   {% endif %}
+	   
 {% endfor %}
 {% endautoescape %} 
 {% endblock %} 
