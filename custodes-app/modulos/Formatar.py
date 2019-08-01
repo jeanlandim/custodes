@@ -46,9 +46,5 @@ class Formatar():
                         Dados = "<a href="+self.Url+NumeroDoChamado+" target=\"_blank\">"+Dados+"</a>" 
                         NovosDadosEmHTML.append(Dados)
               return(NovosDadosEmHTML)
-              f = open('debugg.txy','w')
-              f.write(str(NovosDadosEmHTML))
-              f.close()
           
           return(self.DadosFormatados)
-    
