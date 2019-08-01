@@ -20,6 +20,10 @@ Abaixo, o exemplo típico de um chamado com tais itens e como são interligados:
 
 # Changelog
 
+## 01/08/2019
+* Realizada a manutenção nos cards do chamado para chamados "Não resolvido, fechado" não incluir os demais chamados dentro
+do seu card.
+
 ## 21/07/2018:
 * Refeita a template final de formatação dos chamados utilizando o content container de cards
 * Retirado o JSON para suporte a auditoria
