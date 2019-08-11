@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'custodes_app',
 ]
 
+SUIT_CONFIG = {
+    'ADMIN_NAME':'Custodes'
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
